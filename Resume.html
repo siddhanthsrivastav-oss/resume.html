@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundram Srivastava | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-color: hsl(191, 100%, 50%);
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+
+        .bg-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: move 25s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(120px, 120px);
+            }
+        }
+
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+
+        section {
+            padding: 120px 10% 80px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content span {
+            color: var(--accent-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image-wrapper {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            padding: 10px;
+            animation: float 4s ease-in-out infinite;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+            transition: 0.5s;
+        }
+
+        .hero-image:hover {
+            border-radius: 50%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            display: inline-block;
+            transition: 0.3s transform, 0.3s box-shadow;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+        }
+
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .about-text h3 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-highlights {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .highlight-box {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .highlight-box:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .highlight-box i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .highlight-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .highlight-box p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            padding: 25px;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-image {
+                width: 220px;
+                height: 220px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav {
+                padding: 10px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-circles">
+        <div class="circle" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+        <div class="circle" style="width: 300px; height: 300px; bottom: -50px; left: -50px; background: #9d50bb;"></div>
+    </div>
+
+    <nav class="glass-card">
+        <div class="logo" style="color: var(--accent-color);">sundram.</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm <br> <span>Sundram Srivastava</span></h1>
+                <p>MERN Stack Developer & BCA Graduate. Building scalable web applications with clean code and
+                    modern aesthetics.</p>
+                <a href="#about" class="btn">Know More About Me</a>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image glass-card">
+                    <img src="photos/WhatsApp Image 2026-10-12 at 17.28.16.jpeg" alt="Sundram Srivastava">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="reveal active">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content glass-card">
+            <div class="about-text">
+                <h3>Who is Sundram Srivastava?</h3>
+                <p>I am a passionate <strong>MERN Stack Developer</strong> Completed My BCA<strong>BCA
+                        (Bachelor of Computer Applications)</strong>. I love turning complex problems into elegant,
+                    robust, and highly interactive applications.</p>
+                <p>As a developer, my focus is not just on writing code, but on solving real-world challenges. From
+                    conceptualization and database schema design to the frontend deployment, I enjoy working across the
+                    entire development stack.</p>
+
+                <div class="about-highlights">
+                    <div class="highlight-box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Education</h4>
+                        <p>BCA Graduated</p>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>Specialization</h4>
+                        <p>MERN Stack & APIs</p>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-fire"></i>
+                        <h4>Goal</h4>
+                        <p>Building scalable products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal active">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card glass-card">
+                <i class="fas fa-boxes fa-2x" style="color: #00d2ff;"></i>
+                <br><br>
+                <h3>Medical Hall E-Commerce</h3>
+                <p>Built a complete online medical store platform using React.js, Node.js, Express.js, and MongoDB. Implemented
+user authentication, product management, shopping cart, search and filtering, order management, and responsive
+design.
+                    </p>
+            </div>
+            <div class="project-card glass-card">
+                <i class="fas fa-store fa-2x" style="color: #00d2ff;"></i>
+                <br><br>
+                <h3>E-commerce</h3>
+                <p>Developed a modern e-commerce storefront with product listings, category filters, cart logic, and checkout flow using MERN stack architecture.</p>
+            </div>
+            <div class="project-card glass-card">
+                <i class="fas fa-code fa-2x" style="color: #00d2ff;"></i>
+                <br><br>
+                <h3>Portfolio V2</h3>
+                <p>Interactive portfolio using Glassmorphism and CSS animations to showcase technical skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="reveal active">
+        <h2 class="section-title">Technical Arsenal</h2>
+        <div class="skills-container">
+            <div class="skill-badge glass-card">MongoDB</div>
+            <div class="skill-badge glass-card">Express.js</div>
+            <div class="skill-badge glass-card">React.js</div>
+            <div class="skill-badge glass-card">Node.js</div>
+            <div class="skill-badge glass-card">JavaScript (ES6+)</div>
+            <div class="skill-badge glass-card">REST APIs</div>
+            <div class="skill-badge glass-card">Git & GitHub</div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal active">
+        <h2 class="section-title">Get In Touch</h2>
+        <div style="max-width: 600px; margin: 0 auto;" class="glass-card project-card">
+            <p style="text-align: center; margin-bottom: 20px;">Let's build something amazing together!</p>
+            <div style="display: flex; justify-content: space-around; font-size: 1.5rem;">
+                <a href="https://github.com/siddhanthsrivastav-oss" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub profile" title="GitHub profile" style="color: white; transition: 0.3s;"
+                    onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='white'"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/sundramsrivastav" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn profile" title="LinkedIn profile" style="color: white; transition: 0.3s;"
+                    onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='white'"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="mailto:sundramsrivastava165@gmail.com" aria-label="Email Sundram"
+                    title="Email Sundram" style="color: white; transition: 0.3s;"
+                    onmouseover="this.style.color='#00d2ff'" onmouseout="this.style.color='white'"><i
+                        class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+        reveal();
+    </script>
+
+</body>
+
+</html>
